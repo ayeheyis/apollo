@@ -1,0 +1,40 @@
+{% extends "base_one.html" %}
+{% load staticfiles %}
+{% load bootstrap %}
+
+
+{% block title %} Apollo {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 class="text-center">Identify Victims</h1>
+    {% for patient in patients %}
+        <div class="col-md-4">
+            {% if patient.name %}
+                <div class="panel panel-success identity">
+                    <div class="panel-heading">
+                        <img class="img-rounded" style="width: 100%;height: 200px;" src="/patient_media/{{ patient.pk }}" >
+                    </div>
+                    <div class="panel-body">
+                        <h2 class="text-center">{{ patient.name }}</h2>
+                    </div>
+                </div>
+            {% else %}
+                <div id="patient.pk" class="panel panel-danger identity">
+                    <div class="panel-heading">
+                        <img class="img-rounded" style="width: 100%;height: 200px;" src="/patient_media/{{ patient.pk }}" >
+                    </div>
+                    <div class="panel-body">
+                        <form action="{% url 'id_person' %}" method="post">
+                            {% csrf_token %}
+                            <input style="width: 100%;"  type="text" name="name">
+                            <input type="hidden" name="id" value="{{patient.id}}">
+                            <input type="submit" class=" btn-block btn-warning">
+                        </form>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -1,0 +1,7 @@
+{
+	"patients":[
+	{% for patient in patients %}
+		{ "html":"{{patient.html|safe}}" }
+		{% if not forloop.last %},{% endif %}
+	{% endfor %}]
+}

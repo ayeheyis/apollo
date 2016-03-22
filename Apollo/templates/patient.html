@@ -1,0 +1,64 @@
+<div style='margin-top: 100px;border-width: 5px;' class='content container new-table thumbnail {{patient.pk}}'>
+    {% if patient.priority != -1 %}
+        <h3 class='text-center'>Priority: {{ patient.priority }}</h3>
+    {% endif %}
+    <table class='content table table-striped'>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Info</th>
+            </tr>
+        </thead>
+        <thbody>
+            <tr class='content'>
+                <td width='50%'>Tent</td>
+                <td width='50%'>{{ patient.tent }}</td>
+            </tr>
+            <tr class='content'>
+                <td width='50%'>Name</td>
+                <td width='50%'>{{ patient.name }}</td>
+            </tr>
+            <tr class='content'>
+                <td width='50%'>Conscious</td>
+                <td width='50%'>{{ patient.is_conscious }}</td>
+            </tr>
+            <tr class='content'>
+                <td width='50%'>Emergency</td>
+                <td width='50%'>{{ patient.is_emergency }}</td>
+            </tr>
+            <tr class='content'>
+                <td width='50%'>Injury</td>
+                <td width='50%'>{{ patient.injury.category }}</td>
+            </tr>
+            <tr class='content'>
+                <td width='50%'>Sex</td>
+                <td width='50%'>{{ patient.sex }}</td>
+            </tr>
+            <tr class='content'>
+                <td width='50%'>Age</td>
+                <td width='50%'>{{ patient.age }}</td>
+            </tr>
+            <tr class='content'>
+                <td width='50%'>Height</td>
+                <td width='50%'>{{ patient.height }}</td>
+            </tr>
+        </thbody>
+    </table>
+    <div class='row after'>
+        <div class='col-lg-6'>
+            <img class='img-rounded' style='width: 100%;height: 250px;' src='/patient_media/{{ patient.pk }}' >
+        </div>
+        <div class='col-lg-6'>
+            {% if patient.injury.image %}
+                <img class='img-rounded' style='width: 100%;height: 250px;' src='/injury_media/{{ patient.injury.pk }}' >
+            {% endif %}
+        </div>
+    </div>
+    <div style='margin-top: 20px;' class='priority text-center'>
+        <input type='text' id='{{ patient.pk }}'>
+        <button class='prioritize btn btn-warning' value='{{ patient.pk }}' >Prioritize</button>
+    </div>
+    <div style='margin-top: 20px;' class='check text-center'>
+        <button class='checkin btn btn-warning btn-block' value='{{ patient.pk }}'>Check In</button>
+    </div>
+</div>

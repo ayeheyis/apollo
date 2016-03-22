@@ -1,0 +1,24 @@
+{% extends "base_one.html" %}
+{% load staticfiles %}
+{% load bootstrap %}
+
+
+{% block title %} Sign In {% endblock %}
+
+{% block content %}
+<div class="container auth-con">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 auth-col">
+            <form class="form-signin" action="{% url 'login' %}" method="post">
+                <h1 class="text-center form-signin-heading"> Please sign in </h1>
+                {% csrf_token %}
+                {{ form|bootstrap }}
+                <h2><input type="submit" class="btn btn-warning bt-lg btn-block" value="Submit"></h2>
+                <a href="{% url 'register' %}" class="btn btn-warning bt-lg btn-block"> Don't have an account? </a>
+            </form>
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
+{% endblock %}

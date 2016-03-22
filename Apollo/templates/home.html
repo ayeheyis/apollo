@@ -1,0 +1,72 @@
+{% extends "auth_base.html" %}
+{% load staticfiles %}
+{% load bootstrap %}
+
+
+{% block title %} Home {% endblock %}
+{% block content %}
+<div class="container">
+    <div id="wrapper">
+        <div id="sidebar-wrapper">
+            <h2 class="top-space text-center">Menu</h2>
+            <ul class="list-group">
+                <button id="unprioritized" type="button" class="text-center btn-lg btn-warning btn-block top-space">
+                    Prioritize
+                </button>
+                <button id="unchecked" type="button" class="text-center btn-lg btn-warning btn-block top-space">
+                    Check In
+                </button>
+            </ul>
+        </div>
+
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+                <h1 align="center">
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Hide Menu</a>
+                </h1>
+                <div class="row">
+                    <div id="main" class="col-lg-12">
+                        <div class="content">
+                            <h1 class="text-center">Welcome to Apollo</h1>
+                            <p>First of all, thank you for all your help. Your work is helping us save lives. Below are the instructions on how you can help
+                            based on your location</p>
+
+                            <h2>Online Doctors</h2>
+                            <ul>
+                                <li>Head over to the prioritize tab.</li>
+                                <li>Prioritize patients with information and images we have provided.</li>
+                                <li>Remember the scale is 1 to 10 where 1 is of highest priority.</li>
+                            </ul>
+
+                            <h2>Onsite Doctors</h2>
+                            <p>
+                                You have two jobs.
+                                You can
+                            </p>
+                            <ul>
+                                <li>Head over to the prioritize tab.</li>
+                                <li>Prioritize patients with information and images we have provided.</li>
+                                <li>Remember the scale is 1 to 10 where 1 is of highest priority.</li>
+                            </ul>
+                            <p>
+                                And
+                            </p>
+                            <ul>
+                                <li>Everytime you check a patient, log it into the database</li>
+                                <li>Remember you only see patients in your tent and or ordered by priority</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Menu Toggle Script -->
+<script>
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
+</script>
+{% endblock %}

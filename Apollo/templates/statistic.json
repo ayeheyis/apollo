@@ -1,0 +1,7 @@
+{
+	"statistics":[
+	{% for statistic in statistics %}
+		{ "html":"{{statistic.html|safe}}" }
+		{% if not forloop.last %},{% endif %}
+	{% endfor %}]
+}

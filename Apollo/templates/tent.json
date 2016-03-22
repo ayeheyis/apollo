@@ -1,0 +1,7 @@
+{
+	"tents":[
+	{% for tent in tents %}
+		{ "html":"{{tent.html|safe}}" }
+		{% if not forloop.last %},{% endif %}
+	{% endfor %}]
+}
